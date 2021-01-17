@@ -1,0 +1,19 @@
+{
+    "name": "bruno/php_mvc_objet1",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "PHP_MVC_Objet1\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bruno Dubief",
+            "email": "bruno.dubief@hotmail.fr"
+        }
+    ],
+    "require": {
+        "klein/klein": "^2.1",
+        "twig/twig": "^3.2"
+    }
+}
