@@ -15,6 +15,9 @@
 <div>
     <img src="{{movie.coverImage}}" width="100">
 </div>
+<h2>Directeur</h2>
+<p>{{movie.director.lastName}}</p>
+
 <h2>Acteurs</h2>
 <p>
 {% for acteur in movie.acteurs %}

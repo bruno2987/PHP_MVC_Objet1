@@ -21,24 +21,21 @@ class MovieService {
     }
 
     public function getById($idMovie) {
-        $Movie = $this ->movieDao->findById($idMovie);  // ici, on retourne un objet de type (class) Movie avec toutes les données atomiques de movie (cad les données qui se trouvent que dans la table movie)
+        $movie = $this ->movieDao->findById($idMovie);  // ici, on retourne un objet de type (class) Movie avec toutes les données atomiques de movie (cad les données qui se trouvent que dans la table movie)
         
         $genre =$this->genreDao->findByMovie($idMovie);     // on appelle une fonction qui va retourner un objet de type genre qui contient les données de du genre du film que l'on recherche
-        $Movie->setGenre($genre);
-        print_r($Movie->getGenre());
-        echo '</br>';
+        $movie->setGenre($genre);
 
         $director= $this->directorDao->findByMovie($idMovie);
-        $Movie->setDirector($director);
-        print_r($Movie->getDirector());
+        $movie->setDirector($director);
 
 
         $acteurs=$this->acteurdao->findByMovie($idMovie);
-            $Movie->addActeur($acteurs);
+            $movie->addActeur($acteurs);
 
        // $director=$this-directorDao->findByMovie($idMovie);
         
-        return $Movie;       
+        return $movie;       
     
     }
 
