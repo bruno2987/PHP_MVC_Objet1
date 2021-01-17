@@ -133,6 +133,17 @@ class Movie {
         return $this;
     }
 
+    public function getDirector(): Director
+    {
+        return $this->director;
+    }
+
+    public function setDirector(Director $director)
+    {
+        $this->director = $director;
+        return $this;
+    }
+
     public function getActeur()
     {
         return $this->acteurs;

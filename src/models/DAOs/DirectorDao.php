@@ -9,7 +9,9 @@ class DirectorDao extends BaseDao {
         $res = $stmt->execute([':idMovie'=>$idMovie]);
 
         if($res) {
-            
+            return $stmt->fetchObject(Director::class);
+        } else {
+            throw new \PDOException($stmt->errorInfo() [2]);
         }
     }
 }
