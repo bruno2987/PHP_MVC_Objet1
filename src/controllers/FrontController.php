@@ -43,6 +43,11 @@ class FrontController{
         echo $this->twig->render('movie.html.twig', ['movie'=>$oneMovie]);
         //include_once __DIR__.'/../views/viewActeurParFilm.php';
     }
+
+    public function formAddMovie(){
+        echo $this->twig->render('formAddMovie.html.twig');
+    }
+
 }
 
 

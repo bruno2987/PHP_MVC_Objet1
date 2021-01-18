@@ -60,8 +60,12 @@ $route->respond('GET','/movie/[:id]',function($request) use($fc) {
     $fc -> oneMovie($request->id);
 });
 
-$route->respond('POST','addMovie',function($request,$post) use($bc){
+$route->respond('POST','/addMovie',function($request,$post) use($bc){
     $bc -> addMovie($request->paramsPost());    // La fonction paramsPost est une fonction de la librairie klein qui permet de récupérer tous les éléments renvoyés par la méthode POST.
+});
+
+$route->respond('GET','/formMovie',function($request) use($fc){
+    $fc -> formAddMovie();
 });
 
 $route->dispatch()

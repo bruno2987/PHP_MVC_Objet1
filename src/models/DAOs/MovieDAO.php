@@ -11,6 +11,7 @@ class MovieDao extends BaseDao {      // Cette classe hérite de BaseDao ce qui 
         $res = $stmt->execute([':id'=> $id]);
 
         if ($res) {
+            
             return $this-> createObjectFromFields($stmt->fetch(\PDO::FETCH_ASSOC));
         } else {
             throw new \PDOException($stmt->errorInfo() [2]);
@@ -30,13 +31,16 @@ class MovieDao extends BaseDao {      // Cette classe hérite de BaseDao ce qui 
 
     public function sendMovieToDb($newMovie) {
         $stmt = $this->db->prepare("INSERT INTO `movie` (`id`, `title`, `description`, `duration`, `date`, `cover_image`, `genre_id`, `director_id`) VALUES (NULL, :title, :descript , :duration, :dates, :cover_image, :genre, :director)");
-        $res = $stmt->execute([':title'=>$newMovie->getTitle(),
-        ':descript'=>$newMovie->getDescription(),
-        ':duration'=>$newMovie->getDuration(),
-        ':dates'=>$newMovie->getDate(),
-        ':cover_image'=>$newMovie->getCoverImage(),
-        ':genre'=>$newMovie->getGenre(),
-        ':director'=>$newMovie->getDirector()]);
+        $res = $stmt->execute(
+        [
+            ':title'=>$newMovie->getTitle(),
+            ':descript'=>$newMovie->getDescription(),
+            ':duration'=>$newMovie->getDuration(),
+            ':dates'=>$newMovie->getDate(),
+            ':cover_image'=>$newMovie->getCoverImage(),
+            ':genre'=>$newMovie->getGenre(),
+            ':director'=>$newMovie->getDirector()
+        ]);
     }
 }
 
