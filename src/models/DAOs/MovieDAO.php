@@ -11,7 +11,7 @@ class MovieDao extends BaseDao {      // Cette classe hérite de BaseDao ce qui 
         $res = $stmt->execute([':id'=> $id]);
 
         if ($res) {
-            
+
             return $this-> createObjectFromFields($stmt->fetch(\PDO::FETCH_ASSOC));
         } else {
             throw new \PDOException($stmt->errorInfo() [2]);
@@ -36,10 +36,10 @@ class MovieDao extends BaseDao {      // Cette classe hérite de BaseDao ce qui 
             ':title'=>$newMovie->getTitle(),
             ':descript'=>$newMovie->getDescription(),
             ':duration'=>$newMovie->getDuration(),
-            ':dates'=>$newMovie->getDate(),
+            ':dates'=>$newMovie->getDate()->format('Y-m-d'),
             ':cover_image'=>$newMovie->getCoverImage(),
-            ':genre'=>$newMovie->getGenre(),
-            ':director'=>$newMovie->getDirector()
+            ':genre'=>$newMovie->getGenre()->getId(),
+            ':director'=>$newMovie->getDirector()->getId(),
         ]);
     }
 }

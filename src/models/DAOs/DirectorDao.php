@@ -4,6 +4,17 @@ namespace PHP_MVC_Objet1\models\DAOs;
 use PHP_MVC_Objet1\models\entities\Director;
 
 class DirectorDao extends BaseDao {
+    public function findById($id){
+        $stmt = $this->db->prepare("SELECT director.id, director.first_name, director.last_name FROM director WHERE id = :id ");
+        $res = $stmt->execute([':id'=> $id]);
+
+        if($res){
+            return $stmt-> fetchObject(Director::class);
+        } else {
+            throw new \PDOException($stmt->errorInfo() [2]);
+        }
+    }
+
     public function findByMovie($idMovie){
         $stmt = $this->db->prepare("SELECT director.id , director.last_name as lastName , director.first_name as firstName FROM `director` INNER JOIN movie ON movie.director_id = director.id WHERE movie.id = :idMovie ");
         $res = $stmt->execute([':idMovie'=>$idMovie]);

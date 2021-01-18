@@ -46,11 +46,11 @@ class MovieService {
         $movie = $this->movieDao->createObjectFromFields($movieData);   //création de l'objet Movie à partir des données récupéré par la méthode POST et qui sont dans $movieData
 
         //Il faut maintenant ajouter le genre dans l'objet $movie
-        $genre = $this->genreDao->findByMovie($movieData['genre']);
+        $genre = $this->genreDao->findById($movieData['genre_id']);
         $movie->setGenre($genre);
 
         //On ajoute le directeur dans l'objet $movie
-        $director = $this->directorDao->findByMovie($movieData['genre']);
+        $director = $this->directorDao->findById($movieData['director_id']);
         $movie->setDirector($director);
 
         //maintenant qu'on a créé un objet movie avec toutes les données dedant: On peut l'envoyer dans la base de donnée:

@@ -40,7 +40,7 @@ class GenreDao extends BaseDao {      // Cette classe hérite de BaseDao ce qui 
     }
 
     public function findByMovie($idMovie) : Genre {
-        $stmt = $this->db->prepare("SELECT genre.id , genre.name FROM `genre` INNER JOIN movie ON movie.genre_id = genre.id WHERE movie.id = :id ");
+        $stmt = $this->db->prepare("SELECT genre.id as 'id' , genre.name as 'name' FROM `genre` INNER JOIN movie ON movie.genre_id = genre.id WHERE movie.id = :id ");
         $res = $stmt->execute([':id'=> $idMovie]);
         if($res){
             return $stmt-> fetchObject(Genre::class);
