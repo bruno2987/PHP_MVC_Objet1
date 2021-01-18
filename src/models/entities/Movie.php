@@ -11,7 +11,10 @@ class Movie {
     private $duration;
     private $date;
     private $coverImage;
-    //protected $acteurs;
+    //private $acteurs;   // Attention, il faut soit le mettre en public soit ne pas déclarer du tout l'attribut. Je ne sais pas pourquoi !!!
+    private $director;
+    private $genre;
+
 
    
     /**
@@ -150,8 +153,14 @@ class Movie {
     }
 
     public function addActeur($acteurAjoute) {
-
-        $this->acteurs = $acteurAjoute;
+    /*    if (is_array($this->acteurs) || is_object($this->acteurs)) {
+            foreach ($this->acteurs as $a) {
+                if ($a->getId() == $acteurAjoute->getId()) {
+                    return;
+                }
+            }
+        }*/
+        $this->acteurs[] = $acteurAjoute;
     }
 
 }

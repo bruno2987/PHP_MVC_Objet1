@@ -50,7 +50,7 @@ class ActeurDao extends BaseDao{
 */
 
 if ($res) {
-            return $stmt->fetchAll(\PDO::FETCH_OBJ);    // retourne un tableau d'objet de type Acteur voir doc fetch et fetchAll
+            return $stmt->fetchAll(\PDO::FETCH_CLASS, Acteur::class);    // retourne un tableau d'objet de type Acteur voir doc fetch et fetchAll
             //return $stmt->fetchAll(\PDO::FETCH_CLASS, Acteur::class);   Cette ligne fait plus ou moins la même chose que la ligne au dessus mais retourne un tableau plus complexe
             // à voir pourquoi
             } else {

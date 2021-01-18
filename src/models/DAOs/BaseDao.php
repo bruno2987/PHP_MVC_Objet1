@@ -9,7 +9,7 @@ use PDO;
 class BaseDao {
     protected $db;
     public function __construct() {
-        $this->db = new PDO ('mysql:host=localhost;dbname=php_mvc_objet1','root','root');
+        $this->db = new PDO ('mysql:host=localhost;dbname=php_mvc_objet1','root','');
     }
 }
 
