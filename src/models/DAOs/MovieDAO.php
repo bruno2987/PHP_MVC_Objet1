@@ -27,4 +27,18 @@ class MovieDao extends BaseDao {      // Cette classe hérite de BaseDao ce qui 
                 ->setCoverImage($fields['cover_image']);
         return $movie;
     }
+
+    public function sendMovieToDb($newMovie) {
+        $stmt = $this->db->prepare("INSERT INTO `movie` (`id`, `title`, `description`, `duration`, `date`, `cover_image`, `genre_id`, `director_id`) VALUES (NULL, :title, :descript , :duration, :dates, :cover_image, :genre, :director)");
+        $res = $stmt->execute([':title'=>$newMovie->getTitle(),
+        ':descript'=>$newMovie->getDescription(),
+        ':duration'=>$newMovie->getDuration(),
+        ':dates'=>$newMovie->getDate(),
+        ':cover_image'=>$newMovie->getCoverImage(),
+        ':genre'=>$newMovie->getGenre(),
+        ':director'=>$newMovie->getDirector()]);
+    }
 }
+
+// INSERT INTO movie
+//  INSERT INTO `movie` (`id`, `title`, `description`, `duration`, `date`, `cover_image`, `genre_id`, `director_id`) VALUES (NULL, 'qsdfqsdf', 'qsdfqsdfq', 'qsdf', '2021-01-05', 'qsdfqsdf', '1', '4');

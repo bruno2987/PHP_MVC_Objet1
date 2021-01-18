@@ -54,7 +54,7 @@ class MovieService {
         $movie->setDirector($director);
 
         //maintenant qu'on a créé un objet movie avec toutes les données dedant: On peut l'envoyer dans la base de donnée:
-        $this->movieDao->sendToDb($movie);
+        $this->movieDao->sendMovieToDb($movie);
 
     }
 
