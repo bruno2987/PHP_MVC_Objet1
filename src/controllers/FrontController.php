@@ -12,13 +12,16 @@ class FrontController{
     private $movie;
     private $twig;
 
-
     public function __construct($twig){
         //instanciation du genre
         $this->genreService = new GenreService();
         $this->acteurService = new ActeurService();
         $this->movie = new MovieService();
         $this->twig= $twig;
+    }
+
+    public function accueil(){
+        echo $this->twig->render('accueil.html.twig');
     }
 
     public function test(){

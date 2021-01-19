@@ -16,7 +16,7 @@ $fc = new FrontController($twig);
 $bc = new BackController();
 //$fc->test();
 
-
+$twigAcc = 
 
 $router = new \Klein\Klein();
 
@@ -35,6 +35,10 @@ if(ltrim($base, '/')){
 
 
 $route = new \Klein\Klein();
+
+$route->respond('GET','/',function() use($fc){
+    $fc-> accueil();
+});
 
 $route->respond('GET','/toto', function() {
     return 'Hello toto !!!!';
@@ -68,7 +72,8 @@ $route->respond('GET','/formMovie',function($request) use($fc){
     $fc -> formAddMovie();
 });
 
-$route->dispatch()
+$route->dispatch();
 
+//include_once __DIR__.'/src/views/viewAccueil.php';
 
 ?>
