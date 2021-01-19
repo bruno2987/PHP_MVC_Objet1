@@ -6,6 +6,13 @@ use PHP_MVC_Objet1\models\entities\Movie;
 
 
 class MovieDao extends BaseDao {      // Cette classe hérite de BaseDao ce qui lui permet d'utiliser la connexion à la base de donnée qui est établie dans la classe BaseDao
+
+    public function findAll(){
+        $stmt = $this->db->query("SELECT director.id as id, director.first_name as firstName, director.last_name as lastName FROM movie");
+        $movies = $stmt->fetchall(\PDO::FETCH_CLASS, Movies::class);
+        return $movies;
+    }
+
     public function findById($id) : Movie {
         $stmt = $this->db->prepare("SELECT * FROM movie WHERE id = :id");
         $res = $stmt->execute([':id'=> $id]);

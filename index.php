@@ -64,6 +64,10 @@ $route->respond('GET','/acteur',function() use($fc) {
     $fc -> acteurs();
 });
 
+$route->respond('GET','/movies',function() use($fc) {
+    $fc -> movies();
+});
+
 $route->respond('GET','/movie/[:id]',function($request) use($fc) {
     $fc -> oneMovie($request->id);
 });

@@ -20,6 +20,10 @@ class MovieService {
         $this->directorDao = new DirectorDao();
     }
 
+    public function getAllMovies(){
+        $movies = $this->movieDao->findAll();
+    }
+
     public function getById($idMovie) {
         $movie = $this ->movieDao->findById($idMovie);  // ici, on retourne un objet de type (class) Movie avec toutes les données atomiques de movie (cad les données qui se trouvent que dans la table movie)
         

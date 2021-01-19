@@ -18,7 +18,7 @@ class FrontController{
         //instanciation du genre
         $this->genreService = new GenreService();
         $this->acteurService = new ActeurService();
-        $this->movie = new MovieService();
+        $this->movieService = new MovieService();
         $this->directorService = new DirectorService();
         $this->twig= $twig;
     }
@@ -50,8 +50,12 @@ class FrontController{
         echo $this->twig->render('acteur.html.twig', ['acteurs'=>$acteurs]);
     }
 
+    public function movies(){
+        $movies = $this->movieService->getAllMovies();
+    }
+
     public function oneMovie($idMovie){
-        $oneMovie = $this->movie->getById($idMovie);
+        $oneMovie = $this->movieService->getById($idMovie);
         echo $this->twig->render('movie.html.twig', ['movie'=>$oneMovie]);
         //include_once __DIR__.'/../views/viewActeurParFilm.php';
     }
