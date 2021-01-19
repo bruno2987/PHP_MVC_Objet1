@@ -4,12 +4,14 @@ namespace PHP_MVC_Objet1\Controllers;
 use PHP_MVC_Objet1\models\Services\GenreService;
 use PHP_MVC_Objet1\models\Services\ActeurService;
 use PHP_MVC_Objet1\models\Services\MovieService;
+use PHP_MVC_Objet1\models\Services\DirectorService;
 use Twig\Environment;
 
 class FrontController{
     private $genreService;
     private $acteurService;
     private $movie;
+    private $directorService;
     private $twig;
 
     public function __construct($twig){
@@ -17,6 +19,7 @@ class FrontController{
         $this->genreService = new GenreService();
         $this->acteurService = new ActeurService();
         $this->movie = new MovieService();
+        $this->directorService = new DirectorService();
         $this->twig= $twig;
     }
 
@@ -34,6 +37,12 @@ class FrontController{
         echo $this->twig->render('genre.html.twig', ['genres'=>$genres]);
     }
 
+    public function directors(){
+        $directors = $this->directorService->getAllDirectors();
+        //include_once __DIR__.'/../views/viewGenre.php';   // on inclut la page de view.
+        echo $this->twig->render('director.html.twig', ['directors'=>$directors]);
+    }
+
     public function acteurs(){
         $acteurs = $this->acteurService->getAllActors();
         //print_r($acteurs);
@@ -48,7 +57,9 @@ class FrontController{
     }
 
     public function formAddMovie(){
-        echo $this->twig->render('formAddMovie.html.twig');
+        $genres = $this->genreService->getAllGenres();
+        $directors = $this->directorService->getAllDirectors();
+        echo $this->twig->render('formAddMovie.html.twig',['genres'=>$genres,'directors'=>$directors]);
     }
 
 }

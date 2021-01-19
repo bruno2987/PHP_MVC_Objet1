@@ -56,6 +56,10 @@ $route->respond('GET','/genre',function() use($fc) {
     $fc -> genres();
 });
 
+$route->respond('GET','/directors',function() use($fc) {
+    $fc -> directors();
+});
+
 $route->respond('GET','/acteur',function() use($fc) {
     $fc -> acteurs();
 });

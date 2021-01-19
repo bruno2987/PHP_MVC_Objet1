@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Genre{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+
+    {% for director in directors %}
+        {{director.id}}
+        {{ director.lastName }}
+        {{director.firstName}} </br>
+    {% endfor %}
+
+{% endblock %}

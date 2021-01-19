@@ -4,6 +4,13 @@ namespace PHP_MVC_Objet1\models\DAOs;
 use PHP_MVC_Objet1\models\entities\Director;
 
 class DirectorDao extends BaseDao {
+
+    public function findAll(){
+        $stmt = $this->db->query("SELECT director.id as id, director.first_name as firstName, director.last_name as lastName FROM director");
+        $directors = $stmt->fetchall(\PDO::FETCH_CLASS, Director::class);
+        return $directors;
+    }
+
     public function findById($id){
         $stmt = $this->db->prepare("SELECT director.id, director.first_name, director.last_name FROM director WHERE id = :id ");
         $res = $stmt->execute([':id'=> $id]);
